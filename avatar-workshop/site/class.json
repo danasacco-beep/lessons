@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "avatar-workshop",
-  "title": "BROKEN — should never reach the site",
+  "title": "Avatar Workshop",
   "icon": "◑",
   "owner": "Dana Sacco",
   "summary": "Guess Who’s Talking. Attendees build a photoreal avatar that listens with Flux, thinks with Claude and lip-syncs through Anam, then play a mystery-guest game against each other. Runs in the browser on this site — nothing to install.",
@@ -13,7 +13,7 @@
   "track": "community",
   "minutes": 45,
   "setupMinutes": 45,
-  "runner": "shell",
+  "runner": "avatar",
   "prereqs": [
     "Wired headphones, not speakers — on speakers the avatar talks to itself.",
     "An Anam API key from lab.anam.ai.",
