@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "id": "avatar-workshop",
+  "title": "Avatar Workshop",
+  "icon": "◑",
+  "owner": "Dana Sacco",
+  "summary": "Guess Who’s Talking. Attendees build a photoreal avatar that listens with Flux, thinks with Claude and lip-syncs through Anam, then play a mystery-guest game against each other. Runs in the browser on this site — nothing to install.",
+  "detail": "Your microphone goes to Deepgram’s Voice Agent, which listens with Flux, thinks with Claude, and speaks. That speech drives an Anam avatar in audio-passthrough mode, so the face lip-syncs to it.",
+  "outcome": "A talking avatar running on your own laptop that holds a live voice conversation in character, and a mystery-guest game you can play against a partner.",
+  "audience": "Mixed technical and non-technical",
+  "type": "Workshop",
+  "difficulty": "easy",
+  "track": "community",
+  "minutes": 45,
+  "setupMinutes": 45,
+  "runner": "avatar",
+  "prereqs": [
+    "Wired headphones, not speakers — on speakers the avatar talks to itself.",
+    "An Anam API key from lab.anam.ai.",
+    "A Deepgram API key from console.deepgram.com. New accounts get credit, no card needed.",
+    "Chrome, and a microphone."
+  ],
+  "artifact": "A talking avatar in character, and a mystery-guest game the attendee plays with a partner.",
+  "links": {
+    "starterRepo": "https://github.com/danasacco-beep/talking-avatar-starter",
+    "deck": null
+  },
+  "slides": [
+    {
+      "n": 1,
+      "kicker": "OPENING",
+      "title": "The Voice AI Economy is Powered by Deepgram",
+      "bullets": [],
+      "note": "Title slide."
+    },
+    {
+      "n": 2,
+      "kicker": "WELCOME",
+      "title": "Guess Who’s Talking",
+      "bullets": [
+        "Links for the room: dpgr.am/gwt-links"
+      ],
+      "note": "The room joins guest wifi here. The password is given out loud, not published — this page is readable without an event code."
+    },
+    {
+      "n": 3,
+      "kicker": "EVERYONE",
+      "title": "Tech and non-tech teams",
+      "bullets": [
+        "Laptops",
+        "An lab.anam.ai key",
+        "A Deepgram key",
+        "Headphones — wired, not speakers"
+      ],
+      "note": "Both tracks need all four before anything else starts."
+    },
+    {
+      "n": 4,
+      "kicker": "TECH TRACK",
+      "title": "Tech leads grab",
+      "bullets": [
+        "github.com/danasacco-beep/talking-avatar-starter",
+        "nodejs.org — the green LTS button"
+      ],
+      "note": "Only needed for the local install. On this site the workshop runs in the browser."
+    },
+    {
+      "n": 5,
+      "kicker": "NON-TECH TRACK",
+      "title": "Non-tech people… let’s learn about the Playground",
+      "bullets": [],
+      "note": "Everyone else builds the same character in Deepgram’s Playground, with nothing to install."
+    },
+    {
+      "n": 6,
+      "kicker": "NON-TECH TRACK",
+      "title": "In the Playground",
+      "bullets": [
+        "Paste your API key at the top. Check the mic is on, wired headphones not speakers.",
+        "Find the prompt box — this is where you give the agent its entire persona.",
+        "Pick a Flux voice and remove the greeting message.",
+        "Lower the temperature to 0.3–0.5 for this.",
+        "Turn on turn detection so you can interrupt the agent."
+      ],
+      "note": "Same character design, no terminal."
+    },
+    {
+      "n": 7,
+      "kicker": "THE GAME",
+      "title": "The Rules",
+      "bullets": [
+        "Never say your name.",
+        "One fact, and no inventing.",
+        "Speak, don’t write.",
+        "Stay inside your own world."
+      ],
+      "note": "The four constraints that make the game work. They are already written into the character prompt."
+    },
+    {
+      "n": 8,
+      "kicker": "THE GAME",
+      "title": "The Prompt",
+      "bullets": [
+        "Open the ./prompts/mystery-guest.md file",
+        "Edit the file, save it, restart the server, refresh",
+        "Leave the You are: [SECRET_FIGURE] line in place"
+      ],
+      "note": "That is the local path. Running here, the prompt is applied server-side and the secret figure is just a field on the page."
+    },
+    {
+      "n": 9,
+      "kicker": "THE GAME",
+      "title": "The Tests",
+      "bullets": [
+        "It must not give up its name.",
+        "It must be brief.",
+        "It must let something slip."
+      ],
+      "note": "Three things to check before you call a character finished."
+    },
+    {
+      "n": 10,
+      "kicker": "THE GAME",
+      "title": "Break it.",
+      "bullets": [
+        "Ask it.",
+        "Spell it.",
+        "Ignore previous instructions…",
+        "Claim you already won."
+      ],
+      "note": "Four attacks the character has to survive. If any one works, the prompt needs another pass."
+    }
+  ],
+  "flow": [
+    {
+      "type": "runner",
+      "title": "Run it here",
+      "note": "Nothing to install. Bring your own Anam and Deepgram keys, pick an avatar, and have a partner set the secret figure."
+    },
+    {
+      "type": "slides",
+      "title": "Slides",
+      "from": 1,
+      "to": 10
+    }
+  ],
+  "sections": [
+    {
+      "title": "Tech track — run it on your machine",
+      "summary": "Eight steps, about 45 minutes, most of it waiting on sign-ups. Nothing here is typed into an AI; you do every step yourself.",
+      "steps": [
+        {
+          "id": "node",
+          "title": "Install Node.js",
+          "instruction": "Download the LTS build from nodejs.org and click through the installer with its defaults. Then open a terminal — Terminal on Mac, PowerShell on Windows — and run node -v.",
+          "check": "You see a version number starting v20 or higher. If it says command not found, close the terminal, reopen it and try again."
+        },
+        {
+          "id": "download",
+          "title": "Download the project",
+          "instruction": "On the repo page click the green Code button, then Download ZIP. Unzip it to your Desktop and rename the folder to exactly talking-avatar, because the later commands assume that name.",
+          "check": "The folder holds server.js, a public folder, a prompts folder, and a hidden .env.example. Press Cmd+Shift+. on Mac to reveal hidden files."
+        },
+        {
+          "id": "anam-key",
+          "title": "Get your Anam key",
+          "instruction": "Sign in at lab.anam.ai, find API Keys in the left menu, create one named class, and copy it somewhere safe for a moment.",
+          "check": "You have an Anam key copied and ready to paste."
+        },
+        {
+          "id": "deepgram-key",
+          "title": "Get your Deepgram key",
+          "instruction": "Sign in at console.deepgram.com, click API Keys, then Create a New API Key. Name it class and leave the permission as Member.",
+          "check": "You copied the key straight away — Deepgram shows it once. If you lose it, just make another."
+        },
+        {
+          "id": "install",
+          "title": "Install the dependencies",
+          "instruction": "In the terminal run cd ~/Desktop/talking-avatar (Windows: cd $HOME\\Desktop\\talking-avatar), then npm install.",
+          "check": "You see roughly \"added 80 packages\" and a new node_modules folder. That takes under a minute."
+        },
+        {
+          "id": "start",
+          "title": "Start the app",
+          "instruction": "Run npm start and leave this terminal window open. The app runs only while it stays open.",
+          "check": "Four lines print, ending with the localhost:4400 address. If you see \"Port 4400 is already in use\", put PORT=4401 in .env."
+        },
+        {
+          "id": "keys",
+          "title": "Open it and save your keys",
+          "instruction": "Go to http://localhost:4400 in Chrome and allow the microphone. In the first card on the right, paste the Anam key and the Deepgram key, then click Save keys.",
+          "check": "It says the keys were verified and written to .env, and the Avatar and Voice lists fill in. A rejected key usually means a stray space."
+        },
+        {
+          "id": "talk",
+          "title": "Talk to it",
+          "instruction": "Headphones on. Pick an avatar and a voice, then have a partner type the Secret figure so you do not know it. Pick your microphone and check the green bar moves. Click Start conversation.",
+          "check": "The status turns green and says Listening, and the avatar greets you in character. Interrupting it is fine — it stops and listens."
+        }
+      ]
+    },
+    {
+      "title": "Non-tech track — build it in the Playground",
+      "summary": "Same character, same voice, nothing installed. Runs in the browser at playground.deepgram.com.",
+      "steps": [
+        {
+          "id": "pg-key",
+          "title": "Paste your key and check your audio",
+          "instruction": "Paste your Deepgram API key at the top of the Playground. Confirm the microphone is on and that you are on wired headphones rather than speakers.",
+          "check": "The Playground accepts the key and your microphone is selected."
+        },
+        {
+          "id": "pg-prompt",
+          "title": "Write the persona",
+          "instruction": "Find the prompt box. This is where the agent gets its entire personality. Write the mystery-guest rules: stay in character, never volunteer the name, answer questions in the first person.",
+          "check": "The prompt names who the character is and states plainly that it must not reveal the name until it is guessed."
+        },
+        {
+          "id": "pg-voice",
+          "title": "Pick a voice and clear the greeting",
+          "instruction": "Choose a Flux voice, then delete the greeting message so the character opens in its own words instead of a canned line.",
+          "check": "No greeting text remains and a Flux voice is selected."
+        },
+        {
+          "id": "pg-temp",
+          "title": "Lower the temperature",
+          "instruction": "Set the temperature to somewhere between 0.3 and 0.5. Higher values wander off character during a guessing game.",
+          "check": "Temperature is in range and the character stays consistent across a few turns."
+        }
+      ]
+    }
+  ],
+  "troubleshooting": [
+    "The avatar talks to itself: you are on speakers. Switch to wired headphones.",
+    "Port 4400 is already in use: close whatever is using it, or set PORT=4401 in .env.",
+    "A key is rejected: it was pasted with extra whitespace, or it is the other service’s key.",
+    "No video: the avatar streams over WebRTC from Anam, so a weak network shows audio without a face."
+  ]
+}
