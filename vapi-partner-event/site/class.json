@@ -447,6 +447,7 @@
     "It cannot hear you: check the browser microphone permission, and use headphones so it does not hear itself.",
     "Write my prompt is greyed out: talk to the interviewer first — it writes from the conversation.",
     "Your number rings out: it is not live yet, or no assistant is attached in Vapi’s inbound settings.",
-    "Vapi answers but ignores your prompt: you changed it and never pressed Publish."
+    "Vapi answers but ignores your prompt: you changed it and never pressed Publish.",
+    "The number rings out or you get a network message: it is not live yet. Wait a few minutes and call again."
   ]
 }
