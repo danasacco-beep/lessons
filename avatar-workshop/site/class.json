@@ -234,6 +234,7 @@
     "The avatar talks to itself: you are on speakers. Switch to wired headphones.",
     "Port 4400 is already in use: close whatever is using it, or set PORT=4401 in .env.",
     "A key is rejected: it was pasted with extra whitespace, or it is the other service’s key.",
-    "No video: the avatar streams over WebRTC from Anam, so a weak network shows audio without a face."
+    "No video: the avatar streams over WebRTC from Anam, so a weak network shows audio without a face.",
+    "The avatar appears but never speaks: check the voice is a Flux voice. Pairing Flux listening with an Aura voice connects cleanly and then produces no sound."
   ]
 }
